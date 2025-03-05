@@ -5,6 +5,8 @@ use ngyuki\Phpower\StreamFilter;
 use ngyuki\Phpower\Transpiler;
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 
 class CasesTest extends TestCase
 {
@@ -15,12 +17,8 @@ class CasesTest extends TestCase
         `git clean -f --  $dir`;
     }
 
-    /**
-     * @test
-     * @dataProvider data
-     * @param string $file
-     * @param string $dest
-     */
+    #[Test]
+    #[DataProvider('data')]
     public function transpiler(string $file, string $dest)
     {
         $dest .= '.php';
@@ -30,12 +28,8 @@ class CasesTest extends TestCase
         self::assertTrue(true);
     }
 
-    /**
-     * @test
-     * @dataProvider data
-     * @param string $file
-     * @param string $dest
-     */
+    #[Test]
+    #[DataProvider('data')]
     public function tree(string $file, string $dest)
     {
         $dest .= '.tree.txt';
@@ -50,12 +44,8 @@ class CasesTest extends TestCase
         self::assertTrue(true);
     }
 
-    /**
-     * @test
-     * @dataProvider data
-     * @param string $file
-     * @param string $dest
-     */
+    #[Test]
+    #[DataProvider('data')]
     public function assertion(string $file, string $dest)
     {
         $expected = '';
@@ -84,7 +74,7 @@ class CasesTest extends TestCase
         self::assertEquals($expected, $output);
     }
 
-    public function data()
+    public static function data()
     {
         $files = glob(__DIR__ . '/cases/*.php');
         $tests = [];

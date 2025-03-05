@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<phpunit bootstrap="tests/bootstrap.php" colors="true">
+<phpunit
+    bootstrap="tests/bootstrap.php"
+    colors="true"
+    displayDetailsOnTestsThatTriggerDeprecations="true"
+    displayDetailsOnTestsThatTriggerErrors="true"
+    displayDetailsOnTestsThatTriggerNotices="true"
+    displayDetailsOnTestsThatTriggerWarnings="true"
+    displayDetailsOnPhpunitDeprecations="true"
+    >
     <testsuites>
         <testsuite name="tests">
             <directory>./tests/</directory>
             <exclude>./tests/example/</exclude>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist>
+    <source>
+        <include>
             <directory suffix=".php">src/</directory>
-        </whitelist>
-    </filter>
+        </include>
+    </source>
 </phpunit>
